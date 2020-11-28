@@ -1,14 +1,17 @@
+using aoc_2020;
+using aoc_core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace aoc_2020_test
 {
     [TestClass]
-    public class Day01Test
+    public class Day01Test : BaseTest
     {
         [TestMethod]
-        public void TestInput01()
+        public void FirstPuzzle_TestInput01()
         {
-            Assert.Inconclusive();
+            Puzzle.Input.Load(2);
+            Assert.AreEqual("4", Puzzle.SolveFirstPuzzle());
         }
     }
 }

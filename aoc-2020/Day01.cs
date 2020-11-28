@@ -5,9 +5,12 @@ namespace aoc_2020
 {
     public class Day01 : AdventPuzzle
     {
+
         public override string SolveFirstPuzzle()
         {
-            throw new NotImplementedException();
+            var input = Input.AsInt();
+            return (input * 2).ToString();
+
         }
 
         public override string SolveSecondPuzzle()

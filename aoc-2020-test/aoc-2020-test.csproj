@@ -14,4 +14,9 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\aoc-core\aoc-core.csproj" />
+    <ProjectReference Include="..\aoc-2020\aoc-2020.csproj" />
+  </ItemGroup>
+
 </Project>

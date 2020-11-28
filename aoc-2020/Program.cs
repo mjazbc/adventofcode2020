@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using aoc_core;
 
 namespace aoc_2020
@@ -17,7 +16,7 @@ namespace aoc_2020
             Type t = Type.GetType(puzzleClassName);
 
             AdventPuzzle puzzle = Activator.CreateInstance(t) as AdventPuzzle;
-            puzzle.LoadInputFile(Path.Combine(inputPath, $"{dayName}.txt"));
+            puzzle.Input.LoadFromFile(Path.Combine(inputPath, $"{dayName}.txt"));
             
             puzzle.Solve(Puzzle.Both);
         }
