@@ -2,5 +2,4 @@ language: csharp
 mono: none
 dotnet: 5.0.100
 script:
- - dotnet build ..\aoc-2020\aoc-2020.csproj
- - dotnet test ..\aoc-2020-test\
+ - dotnet build ./aoc-2020/
