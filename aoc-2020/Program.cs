@@ -6,7 +6,7 @@ namespace aoc_2020
 {
     class Program
     {
-        private const string inputPath = "../inputs/";
+        private const string inputPath = "./inputs/";
         static void Main(string[] args)
         {
             int day = 1;

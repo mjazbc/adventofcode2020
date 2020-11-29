@@ -1,5 +1,3 @@
-using aoc_2020;
-using aoc_core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace aoc_2020_test
