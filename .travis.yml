@@ -1,0 +1,6 @@
+language: csharp
+mono: none
+dotnet: 5.0.100
+script:
+ - dotnet build .\aoc-2020\
+ - dotnet test .\aoc-2020-test\
