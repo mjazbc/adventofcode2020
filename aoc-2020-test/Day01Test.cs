@@ -8,8 +8,16 @@ namespace aoc_2020_test
         [TestMethod]
         public void FirstPuzzle_TestInput01()
         {
-            Puzzle.Input.Load(2);
-            Assert.AreEqual("4", Puzzle.SolveFirstPuzzle());
+            Puzzle.Input.LoadFromFile("../../../inputs/day01/test01.txt");
+            Assert.AreEqual("514579", Puzzle.SolveFirstPuzzle());
+        }
+
+        
+        [TestMethod]
+        public void SecondPuzzle_TestInput01()
+        {
+            Puzzle.Input.LoadFromFile("../../../inputs/day01/test01.txt");
+            Assert.AreEqual("241861950", Puzzle.SolveSecondPuzzle());
         }
     }
 }
