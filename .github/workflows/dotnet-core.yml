@@ -17,9 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.100
-    - name: Install dependencies
-      run: dotnet restore ./aoc-2020/
     - name: Build
-      run: dotnet build ./aoc-2020/ --configuration Release --no-restore
+      run: dotnet build ./aoc-2020/ --configuration Release
     - name: Test
-      run: dotnet test ./aoc-2020-test/ --no-restore --verbosity normal
+      run: dotnet test ./aoc-2020-test/ --verbosity normal
