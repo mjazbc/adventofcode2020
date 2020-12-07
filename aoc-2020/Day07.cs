@@ -36,10 +36,15 @@ namespace aoc_2020
         public override string SolveSecondPuzzle()
         {
             var rules = ParseInput(Input.AsStringArray());
-            throw new NotImplementedException();
-            
+            var total = CountBags(rules, "shiny gold");
+
+            return total.ToString();    
         }
 
+        private int CountBags(Dictionary<string, List<(string, int)>> input, string current)
+        {
+            return input[current].Sum(bag => bag.Item2 + bag.Item2 * CountBags(input, bag.Item1));
+        }
 
 
         private Dictionary<string, List<(string, int)>> ParseInput(string[] input)

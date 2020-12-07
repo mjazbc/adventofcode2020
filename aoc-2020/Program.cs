@@ -18,7 +18,7 @@ namespace aoc_2020
             AdventPuzzle puzzle = Activator.CreateInstance(t) as AdventPuzzle;
             puzzle.Input.LoadFromFile(Path.Combine(inputPath, $"{dayName}.txt"));
             
-            puzzle.Solve(Puzzle.Both);
+            puzzle.Solve(Puzzle.Second);
         }
     }
 }
