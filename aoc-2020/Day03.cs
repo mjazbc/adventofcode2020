@@ -25,19 +25,19 @@ namespace aoc_2020
                          .ToString();
         }
 
-        private int CountTrees(char[][] map, (int stepy, int stepx) slope)
+        private int CountTrees(char[,] map, (int stepy, int stepx) slope)
         {
             int y = 0;
             int x = 0;
 
             int trees = 0;
 
-            while(y < map.Length - slope.stepy)
+            while(y < map.GetLength(0) - slope.stepy)
             {
                 y += slope.stepy;
-                x = (x + slope.stepx) % map[0].Length;
+                x = (x + slope.stepx) % map.GetLength(1);
 
-                if(map[y][x] == '#')
+                if(map[y,x] == '#')
                     trees++;
             }
 
