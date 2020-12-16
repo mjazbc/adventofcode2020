@@ -9,7 +9,7 @@ namespace aoc_2020
         private const string inputPath = "./inputs/";
         static void Main(string[] args)
         {
-            int day = 14;
+            int day = 15;
 
             string dayName = $"Day{day:00}";
             string puzzleClassName = $"{typeof(Program).Namespace}.{dayName}";
