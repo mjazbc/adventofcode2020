@@ -8,9 +8,8 @@ namespace aoc_2020
 {
     public class Day15 : AdventPuzzle
     {
-        public override string SolveFirstPuzzle()
+        private int GetNumber(int iterations)
         {
-            int limit = 30000000;
             var nums = Input.AsIntArray(",");
 
             var idxs = Enumerable.Range(1, nums.Length)
@@ -19,7 +18,7 @@ namespace aoc_2020
 
             int prev = -1;
             int curr = 0;
-            for(int turn = nums.Length + 1; turn <= limit; turn++){
+            for(int turn = nums.Length + 1; turn <= iterations; turn++){
 
                 if(idxs.TryGetValue(prev, out int prevValue))
                     curr = turn - 1 - prevValue;
@@ -30,12 +29,9 @@ namespace aoc_2020
                 prev = curr;
             }
 
-            return curr.ToString();
+            return curr;
         }
-
-        public override string SolveSecondPuzzle()
-        {
-            throw new NotImplementedException();
-        }
+        public override string SolveFirstPuzzle() => GetNumber(2020).ToString();       
+        public override string SolveSecondPuzzle() => GetNumber(30000000).ToString();        
     }
 }
