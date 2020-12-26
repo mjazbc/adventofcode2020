@@ -19,7 +19,7 @@ namespace aoc_2020
             puzzle.Input.LoadFromFile(Path.Combine(inputPath, $"{dayName}.txt"));
             puzzle.ParseInput();
             
-            puzzle.Solve(Puzzle.First);
+            puzzle.Solve(Puzzle.Both);
         }
     }
 }
