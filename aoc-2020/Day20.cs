@@ -55,15 +55,15 @@ namespace aoc_2020
             var puzzle = SolvePuzzle();
             var combinedPuzzle = CombinePieces(puzzle);
 
-            
+
             var monsterRegex = new Regex(
                                                                                             "(..................#." +
                  "............................................................................#....##....##....###" +
                  ".............................................................................#..#..#..#..#..#...)");
             // var monsterRegex = new Regex("(....................#.....#....##....##....###.....#..#..#..#..#..#.....)");
-            var imageWithMonsters = FindMonsters(monsterRegex,  combinedPuzzle);
+            var imageWithMonsters = FindMonsters(monsterRegex, combinedPuzzle);
             var count = CountMonsters(monsterRegex, imageWithMonsters);
-           
+
             var monsters = count * 15; // 15 #s in each monster
             var total = imageWithMonsters.Count(x => x == '#') - monsters;
 
@@ -83,7 +83,7 @@ namespace aoc_2020
             return count;
         }
         private string FindMonsters(Regex monsterRegex, string combinedPuzzle)
-        {   
+        {
             Tile t = ParseTiles((combinedPuzzle).Split(Environment.NewLine))[0];
             string oneliner = t.GetOnelineImage();
             int rotations = 0;
@@ -91,7 +91,7 @@ namespace aoc_2020
             while (!monsterRegex.IsMatch(oneliner))
             {
                 RotateAndFlip(rotations++, ref t);
-                oneliner =  t.GetOnelineImage();             
+                oneliner = t.GetOnelineImage();
             }
 
             return oneliner;
@@ -105,9 +105,9 @@ namespace aoc_2020
             if (rotations == 3)
                 t.FlipHorizontal();
 
-            t.Rotate();     
+            t.Rotate();
         }
-        private string CombinePieces(List<(Tile, (int,int))> puzzle)
+        private string CombinePieces(List<(Tile, (int, int))> puzzle)
         {
             StringBuilder solved = new StringBuilder();
             var size = puzzle.Max(x => x.Item2.Item1);
@@ -122,7 +122,7 @@ namespace aoc_2020
                 {
                     foreach (var piece in pieces)
                         solved.Append(string.Join("", piece[k][1..^1]));
-                    
+
                     solved.Append(Environment.NewLine);
                 }
             }
@@ -254,9 +254,6 @@ namespace aoc_2020
         {
             Id = id;
             Image = image;
-
-            string u, r, d, l;
-            u = r = d = l = "";
 
             ReadBorders();
         }
