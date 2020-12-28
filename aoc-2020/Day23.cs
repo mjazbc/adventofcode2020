@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using aoc_core;
 
 namespace aoc_2020
@@ -54,43 +56,40 @@ namespace aoc_2020
         {
             var cupsList = Input.AsString().ToCharArray().Select(x => int.Parse(x+"")).ToList();
 
-            cupsList.AddRange(Enumerable.Range(10, 1000000 - 9));
+            int total = 1000000;
+            cupsList.AddRange(Enumerable.Range(10, total - 9));
+            var cups = cupsList.Zip(cupsList.Append(cupsList.First()).Skip(1)).ToDictionary(k => k.First, v => v.Second);
 
-            var cups = new LinkedList<int>(cupsList);
-
-            // HashSet<LinkedList<int>> history = new HashSet<LinkedList<int>>();
-            // history.Add()
-            var current = cups.First;
-
-            for(int i = 0; i < 10000; i++)
-            {       
-                // Console.WriteLine(i);
+            var current = cupsList[0];
+    
+            for(int i = 0; i < 10000000; i++)
+            {    
                 var nextThree = new List<int>();
+                var next = current;
                 for(int j = 0; j < 3; j++)
                 {
-                    var n = current.NextOrWrapAround();
-                    nextThree.Add(n.Value);
-                    cups.Remove(n);
+                    var n = cups[next];
+                    nextThree.Add(n);
+                    next = n;
                 }
 
-                var destination = current.Value == 1 ? 1000000 : current.Value - 1; 
+                var destination = current == 1 ? total : current - 1; 
                 while(nextThree.Contains(destination))
                 {
-                    destination = destination == 1 ? 1000000 : destination - 1;        
+                    destination = destination == 1 ? total : destination - 1;        
                 }
 
-                var destCup = cups.Find(destination);
-                destCup = cups.AddAfter(destCup, nextThree[0]);
-                destCup = cups.AddAfter(destCup, nextThree[1]);
-                destCup = cups.AddAfter(destCup, nextThree[2]);
+                var destCupAfter = cups[destination];
+                cups[current] = cups[nextThree[2]];
+                cups[destination] = nextThree[0];
+                cups[nextThree[2]] = destCupAfter; 
 
-                current = current.NextOrWrapAround();
+                current = cups[current];
 
-                if(cups)
             }
 
-            var one = cups.Find(1);
-            return ((long)one.NextOrWrapAround().Value * one.NextOrWrapAround().NextOrWrapAround().Value).ToString();
+            var one = cups[1];
+            return ((long)one * cups[one]).ToString();
         }
     }
 
