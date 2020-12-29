@@ -9,7 +9,7 @@ namespace aoc_2020
         private const string inputPath = "./inputs/";
         static void Main(string[] args)
         {
-            int day = 23;
+            int day = 24;
 
             string dayName = $"Day{day:00}";
             string puzzleClassName = $"{typeof(Program).Namespace}.{dayName}";
@@ -19,7 +19,7 @@ namespace aoc_2020
             puzzle.Input.LoadFromFile(Path.Combine(inputPath, $"{dayName}.txt"));
             puzzle.ParseInput();
             
-            puzzle.Solve(Puzzle.Both);
+            puzzle.Solve(Puzzle.Second);
         }
     }
 }
